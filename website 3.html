@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Harsha Vardan Kamal | Data Engineer Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Data Engineer specializing in cloud-based ETL pipelines, AWS, Azure, and advanced analytics">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --color-primary: #0A0A0A;
+    --color-secondary: #141414;
+    --color-card: #1A1A1A;
+    --color-accent: #00E676;
+    --color-accent-glow: rgba(0, 230, 118, 0.15);
+    --color-text: #B8B8B8;
+    --color-heading: #FFFFFF;
+    --color-link-hover: #00FF7F;
+    --max-width: 1200px;
+    --spacing-unit: 8px;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--color-text);
+    line-height: 1.7;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated gradient background */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 230, 118, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 230, 118, 0.02) 0%, transparent 50%);
+    animation: gradientShift 20s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-5%, -5%) rotate(180deg); }
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+    transition: all 0.3s var(--transition-smooth);
+    position: relative;
+}
+
+a:hover {
+    color: var(--color-link-hover);
+}
+
+/* Selection styling */
+::selection {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-link-hover);
+}
+
+/* Enhanced Navigation */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 1px 0 rgba(0, 230, 118, 0.1), 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 230, 118, 0.1);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+    gap: calc(var(--spacing-unit));
+}
+
+.nav-link {
+    color: var(--color-text);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: all 0.3s var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.02em;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-accent-glow), transparent);
+    transition: left 0.5s var(--transition-smooth);
+}
+
+.nav-link:hover::before {
+    left: 100%;
+}
+
+.nav-link:hover {
+    background: rgba(0, 230, 118, 0.08);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--color-accent-glow);
+}
+
+.nav-link i {
+    margin-right: calc(var(--spacing-unit));
+    font-size: 0.85em;
+}
+
+/* Hero Section with Enhanced Typography */
+header {
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-heading);
+    padding: calc(var(--spacing-unit) * 15) 0 calc(var(--spacing-unit) * 10) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(180deg, transparent, var(--color-primary));
+    pointer-events: none;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: fadeInDown 0.8s var(--transition-bounce) forwards;
+    animation-delay: 0.2s;
+    text-shadow: 0 0 40px var(--color-accent-glow);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--color-accent);
+    box-shadow: 0 0 20px var(--color-accent);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 1s;
+}
+
+.contact, .header-links {
+    margin: calc(var(--spacing-unit) * 3) 0;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+.contact a, .header-links a {
+    color: var(--color-text);
+    margin: 0 calc(var(--spacing-unit) * 2.5);
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 2);
+    border-radius: 6px;
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.contact a:hover, .header-links a:hover {
+    color: var(--color-accent);
+    background: rgba(0, 230, 118, 0.05);
+    transform: translateY(-2px);
+}
+
+.contact i, .header-links i {
+    color: var(--color-accent);
+    font-size: 1.1em;
+}
+
+/* Main Container */
+.main-container {
+    max-width: var(--max-width);
+    margin: calc(var(--spacing-unit) * 10) auto;
+    padding: 0 calc(var(--spacing-unit) * 3);
+    position: relative;
+    z-index: 1;
+}
+
+/* Enhanced Cards with Micro-interactions */
+.section-card {
+    margin-bottom: calc(var(--spacing-unit) * 10);
+    border-radius: 20px;
+    background: var(--color-card);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 7);
+    position: relative;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s var(--transition-smooth), 
+                transform 1s var(--transition-smooth),
+                box-shadow 0.4s var(--transition-smooth);
+    overflow: hidden;
+}
+
+.section-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.section-card:hover::before {
+    opacity: 1;
+}
+
+.section-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 40px var(--color-accent-glow),
+                0 0 0 1px rgba(0, 230, 118, 0.1);
+}
+
+.section-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+    color: var(--color-heading);
+    border-bottom: 2px solid rgba(0, 230, 118, 0.2);
+    padding-bottom: calc(var(--spacing-unit) * 2.5);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
+}
+
+.subtitle-date {
+    font-size: 1.05em;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-top: calc(var(--spacing-unit) * -2);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+}
+
+.subtitle-date::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--color-accent);
+    border-radius: 2px;
+}
+
+.icon-section {
+    color: var(--color-accent);
+    font-size: 2em;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 230, 118, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--color-accent-glow);
+}
+
+/* Content Elements */
+.about-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.exp-details p {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    line-height: 1.8;
+}
+
+.proj-list, .cert-list, .edu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.proj-list > li {
+    margin-bottom: calc(var(--spacing-unit) * 5);
+    padding: calc(var(--spacing-unit) * 3);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border-left: 3px solid var(--color-accent);
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.proj-list > li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(8px);
+    box-shadow: -4px 0 12px var(--color-accent-glow);
+}
+
+.proj-title, .cert-title, .edu-link {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-heading);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    transition: color 0.3s;
+}
+
+.proj-title:hover, .edu-link:hover {
+    color: var(--color-accent);
+}
+
+.proj-title i {
+    color: var(--color-accent);
+    font-size: 1.2em;
+}
+
+.proj-description {
+    margin: calc(var(--spacing-unit) * 2) 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.proj-stack {
+    font-size: 0.9em;
+    color: #888;
+    font-weight: 500;
+    margin-top: calc(var(--spacing-unit) * 2);
+    padding-left: calc(var(--spacing-unit) * 3);
+    border-left: 3px solid rgba(0, 230, 118, 0.3);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.02em;
+}
+
+.proj-link-group {
+    margin-top: calc(var(--spacing-unit) * 2);
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+    flex-wrap: wrap;
+}
+
+/* Enhanced CTA Buttons */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s var(--transition-bounce);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-github {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px var(--color-accent-glow);
+}
+
+.cta-github:hover {
+    background: var(--color-link-hover);
+    box-shadow: 0 8px 24px rgba(0, 230, 118, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Certifications */
+.cert-list li {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    padding: calc(var(--spacing-unit) * 1.5);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.cert-list li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(6px);
+}
+
+.cert-list i {
+    color: var(--color-accent);
+    margin-right: calc(var(--spacing-unit));
+    font-size: 1.1em;
+}
+
+/* Icon Styling */
+.icon-databricks, .icon-netflix {
+    height: 1.1em;
+    vertical-align: middle;
+    margin-right: calc(var(--spacing-unit));
+    filter: drop-shadow(0 0 2px var(--color-accent)) 
+            drop-shadow(0 0 4px var(--color-accent));
+}
+
+.icon-netflix {
+    filter: hue-rotate(110deg) saturate(200%) 
+            drop-shadow(0 0 2px var(--color-accent));
+}
+
+/* Enhanced Skills Section */
+.skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 4);
+    margin-top: calc(var(--spacing-unit) * 4);
+}
+
+.skills-group {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: calc(var(--spacing-unit) * 3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, var(--color-accent-glow), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.skills-group:hover::before {
+    opacity: 1;
+}
+
+.skills-group:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 230, 118, 0.2);
+    box-shadow: 0 12px 36px var(--color-accent-glow);
+}
+
+.skills-group-title {
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    position: relative;
+    z-index: 1;
+}
+
+.skills-group-title i {
+    color: var(--color-accent);
+    font-size: 1.3em;
+}
+
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-heading);
+    margin: calc(var(--spacing-unit)) calc(var(--spacing-unit)) calc(var(--spacing-unit)) 0;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.3s var(--transition-smooth);
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 1;
+}
+
+.skill-pill i {
+    font-size: 1.1em;
+    color: var(--color-accent);
+}
+
+.skill-pill:hover {
+    background: rgba(0, 230, 118, 0.12);
+    border-color: var(--color-accent);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px var(--color-accent-glow);
+}
+
+/* Education Links */
+.edu-list li {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    padding: calc(var(--spacing-unit) * 2);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.edu-list li:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(8px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pagePulse {
+    0% {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 30px var(--color-accent-glow);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+.main-container.pulsing {
+    animation: pagePulse 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-card {
+        padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 3);
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+        gap: calc(var(--spacing-unit) / 2);
+    }
+
+    .nav-link {
+        padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 2);
+        font-size: 0.85rem;
+    }
+
+    .contact a, .header-links a {
+        margin: calc(var(--spacing-unit)) calc(var(--spacing-unit));
+        font-size: 0.85rem;
+    }
+
+    .skills-categories {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.4rem;
+    }
+
+    .proj-title {
+        font-size: 1.05rem;
+    }
+
+    .contact, .header-links {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing-unit));
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .navbar {
+        position: static;
+    }
+
+    .section-card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-code-branch"></i> Projects</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-list-check"></i> Skills</a>
+        <a href="#certifications" class="nav-link"><i class="fa-solid fa-award"></i> Certifications</a>
+    </div>
+</nav>
+
+<header>
+    <h1>HARSHA VARDAN KAMAL</h1>
+    <div class="contact">
+        <a href="mailto:nhvk5555@gmail.com"><i class="fa-solid fa-envelope"></i> nhvk5555@gmail.com</a>
+        <a href="tel:+14077176713"><i class="fa-solid fa-phone"></i> +1 407-717-6713</a>
+        <span style="color:var(--color-link-hover);"><i class="fa-solid fa-location-dot"></i> Orlando, FL (Open to relocate)</span>
+    </div>
+    <div class="header-links">
+        <a href="https://linkedin.com/in/harshavardankamalnalanagula" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/harshavardankamal" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+</header>
+
+<div class="main-container" id="main-content">
+
+    <div class="section-card" id="about">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-user"></i></span>About Me</div>
+        <div class="about-section">
+            <p>
+                A skilled data engineer experienced in building and optimizing robust ETL pipelines, with strong proficiency in Python, PySpark, and cloud technologies like AWS and Azure. Known for expertise in data governance, PII protection, and delivering impactful analytics across diverse domains. Holds industry certifications in Snowflake, Databricks, Azure, and AWS, and brings a hands-on, solutions-oriented approach to all projects. Currently pursuing a Master's in Computer Science at UCF.
+            </p>
+        </div>
+    </div>
+    
+    <div class="section-card" id="experience">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-briefcase"></i></span>Accenture Solutions Pvt. Ltd. | Data Engineer</div>
+        <span class="subtitle-date"><i class="fa-solid fa-calendar-alt"></i> Nov 2022 - Aug 2024</span>
+        <div class="exp-details">
+            <p>
+            As a Data Engineer at Accenture, I designed and maintained robust cloud-based data pipelines to fuel retail and marketing analytics. My core work involved developing scalable ETL workflows utilizing AWS Lambda, S3, SQS, and PySpark to handle high-volume data ingestion, transformation, and reliable delivery for business reporting and insights. I also focused on automation and security, implementing SFTP over SSH for secure data exchange and automating data ingestion into AWS S3 to support systems like Adobe Campaign Standard, which enhanced data accessibility and consistency for business teams.
+            </p>
+            <p>
+            Furthermore, I optimized pipeline orchestration and monitoring by successfully transitioning workflows from AWS CodePipeline to Jenkins. A key focus was strengthening data governance, where I enhanced PySpark workflows to generate regional Hive databases and implemented PII masking with tailored Power BI access controls. This comprehensive approach ensured data compliance and facilitated the secure delivery of critical analytics, deepening my expertise in cloud data engineering, ETL automation, and data governance to drive data-driven decision-making for marketing and retail teams.
+            </p>
+        </div>
+    </div>
+
+    <div class="section-card" id="education">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-graduation-cap"></i></span>Education</div>
+        <ul class="edu-list">
+            <li>
+                <a class="edu-link" href="https://drive.google.com/file/d/1nLASYZKtovx6AtmuZizNOyJQ4KRuXCGv/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-university"></i> University of Central Florida, Orlando – Master of Science, Computer Science 
+                </a>
+                <span style="display:block; color:#888; margin-left:25px; font-size:0.9em; font-weight:500;">(Expected May 2026)</span>
+            </li>
+            <li>
+                <a class="edu-link" href="https://drive.google.com/file/d/1-zcMiDJiNBM3fL2laBjQ8coNeeau0WIF/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-graduation-cap"></i> Vellore Institute of Technology, Vellore – Bachelor of Science in Computer Science
+                </a>
+                <span style="display:block; color:#888; margin-left:25px; font-size:0.9em; font-weight:500;">(May 2022)</span>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="section-card" id="projects">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-code-branch"></i></span>Key Projects</div>
+        <ul class="proj-list">
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-medal"></i> Olympic Data Analysis</div>
+                <div class="proj-description">
+                    This project focused on building a scalable ETL pipeline using Azure Databricks to handle Olympic data. The data was cleansed and transformed using PySpark to ensure high quality. Advanced analytics were conducted in Azure Synapse to generate insights into medal distributions. The final step involved designing an interactive Power BI dashboard to facilitate faster decision-making.
+                </div>
+                <div class="proj-link-group">
+                    <a class="cta-button cta-github" href="https://github.com/harshavardankamal/Olympic-Data-Analysis" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repository</a>
+                </div>
+                <div class="proj-stack">Stack: Azure Databricks, PySpark, Azure Synapse, Power BI</div>
+            </li>
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-store"></i> Retail Store Data Analysis</div>
+                <div class="proj-description">
+                    Designed an event-driven architecture with Apache Kafka and Spark for real-time data processing. ETL pipelines were developed in AWS Glue to enhance data quality and improve inventory efficiency. KPI dashboards were subsequently created using Redshift and Tableau to deliver actionable insights, thereby cutting down analysis time.
+                </div>
+                <div class="proj-link-group">
+                    <a class="cta-button cta-github" href="https://github.com/harshavardankamal/Retail-Store-Data-Analysis" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repository</a>
+                </div>
+                <div class="proj-stack">Stack: Kafka, Spark Streaming, AWS Glue, Redshift, Tableau</div>
+            </li>
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-user-minus"></i> Customer Churn Prediction Using Machine Learning Models</div>
+                <div class="proj-description">
+                    Built a robust churn prediction model utilizing Logistic Regression, Random Forests, and Gradient Boosting. Included advanced data preprocessing and feature engineering, with deployment via Scikit-learn to support retention analytics.
+                </div>
+                <div class="proj-stack">Stack: Python, Scikit-learn, Feature Engineering, Gradient Boosting</div>
+            </li>
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-utensils"></i> Restaurant Sales Data Analysis</div>
+                <div class="proj-description">
+                    Optimized restaurant sales using data-driven strategies and predictive modeling. Leveraged Excel and Python for forecasting, and Power BI for deep sales analysis and dynamic menu optimization.
+                </div>
+                <div class="proj-link-group">
+                    <a class="cta-button cta-github" href="https://github.com/harshavardankamal/Restaurant-Sales-Data-Analysis" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repository</a>
+                </div>
+                <div class="proj-stack">Stack: Python (Scikit-Learn), K-Means Clustering, SQL, Power BI</div>
+            </li>
+
+            <li>
+                <div class="proj-title">
+                    <i class="fa-solid fa-film" style="color: var(--color-accent);"></i>
+                    Netflix Titles Data Analysis
+                </div>
+                <div class="proj-description">
+                    Created a Tableau dashboard to visualize Netflix release trends, mapping global production origins and content dominance. Analysis leveraged SQL, Python, and Tableau to examine patterns and shifts in releases and ratings.
+                </div>
+                <div class="proj-link-group">
+                    <a class="cta-button cta-github" href="https://public.tableau.com/views/prac10_16535810188580/Dashboard1?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-chart-area"></i> Dashboard</a>
+                </div>
+                <div class="proj-stack">Stack: SQL, Python (Pandas, Matplotlib), Tableau</div>
+            </li>
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-robot"></i> Chatbot Creation using PyTextRank</div>
+                <div class="proj-description">
+                    Developed an extractive summarization model leveraging PyTextRank and various NLP techniques, enabling automated conversation summarization and output generation.
+                </div>
+                <div class="proj-stack">Stack: Python, NLP, PyTextRank, TextRank, LexRank</div>
+            </li>
+
+            <hr style="border: 0; border-top: 1px dashed rgba(255, 255, 255, 0.1); margin: 40px 0;">
+            <div style="font-size:1.3em; font-weight:700; color:var(--color-heading); margin-bottom:20px; display: flex; align-items: center; gap: 12px;"><i class="fa-solid fa-laptop-code" style="color:var(--color-accent);"></i> Software Development</div>
+
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-comments"></i> WebSocket-Based Messaging Platform</div>
+                <div class="proj-description">
+                    Developed a real-time messaging system using Node.js, Express, and WebSockets. Redis enabled efficient real-time event broadcasting and AWS/Nginx cloud deployment handled load balancing.
+                </div>
+                <div class="proj-link-group">
+                    <a class="cta-button cta-github" href="https://github.com/harshavardankamal/WebSocket-Based-Messaging-Platform" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repository</a>
+                </div>
+                <div class="proj-stack">Stack: Node.js, WebSockets, Express, Redis, AWS, Nginx</div>
+            </li>
+            
+            <li>
+                <div class="proj-title"><i class="fa-solid fa-mobile"></i> Socialize Mobile Application</div>
+                <div class="proj-description">
+                    Built a mobile social networking app using Flutter-Dart and Firebase, featuring encrypted messaging, real-time posts, and secure chat delivery, plus smart screen time alerts.
+                </div>
+                <div class="proj-stack">Stack: Flutter, Dart, Firebase (Firestore, Auth, FCM), AES Encryption</div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="section-card" id="skills">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-list-check"></i></span>Technical Skills</div>
+        <div class="skills-categories">
+            
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-code"></i> Languages & Libraries</div>
+                <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-pill"><i class="fa-solid fa-database"></i> SQL</span>
+                <span class="skill-pill"><i class="fa-brands fa-r-project"></i> R</span>
+                <span class="skill-pill"><i class="fab fa-java"></i> Java</span>
+                <span class="skill-pill"><i class="fa-solid fa-terminal"></i> Shell</span>
+                <span class="skill-pill"><i class="fa-solid fa-cube"></i> Scala</span>
+                <span class="skill-pill"><i class="fa-solid fa-calculator"></i> NumPy</span>
+                <span class="skill-pill"><i class="fa-solid fa-table"></i> Pandas</span>
+                <span class="skill-pill"><i class="fa-solid fa-chart-line"></i> Matplotlib</span>
+                <span class="skill-pill"><i class="fa-solid fa-gear"></i> Scikit-learn</span>
+            </div>
+            
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-cloud"></i> Cloud Platforms</div>
+                <span class="skill-pill"><i class="fab fa-aws"></i> AWS</span>
+                <span class="skill-pill"><i class="fab fa-microsoft"></i> Azure</span>
+                <span class="skill-pill"><i class="fab fa-google"></i> GCP</span>
+            </div>
+
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-gears"></i> Big Data & Processing</div>
+                <span class="skill-pill"><i class="fa-solid fa-fire"></i> PySpark</span>
+                <span class="skill-pill"><i class="fa-solid fa-arrow-right-arrow-left"></i> Kafka</span>
+                <span class="skill-pill"><i class="fa-solid fa-warehouse"></i> Hadoop/Hive</span>
+                <span class="skill-pill"><i class="fa-solid fa-shuffle"></i> ETL/dbt</span>
+                <span class="skill-pill"><i class="fa-solid fa-rocket"></i> Airflow</span>
+                <span class="skill-pill"><i class="fa-solid fa-cubes"></i> AWS Glue</span>
+                <span class="skill-pill"><i class="fa-solid fa-chart-bar"></i> Azure Synapse</span>
+                <span class="skill-pill"><i class="fa-solid fa-truck"></i> ADF/Fivetran</span>
+            </div>
+
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-database"></i> Data Warehousing & DBs</div>
+                <span class="skill-pill"><i class="fa-solid fa-snowflake"></i> Snowflake</span>
+                <span class="skill-pill"><i class="fa-solid fa-table"></i> Redshift</span>
+                <span class="skill-pill"><i class="fa-solid fa-braille"></i> Databricks</span>
+                <span class="skill-pill"><i class="fa-solid fa-cube"></i> BigQuery</span>
+                <span class="skill-pill"><i class="fa-solid fa-file"></i> S3/Azure Blob</span>
+                <span class="skill-pill"><i class="fa-solid fa-gears"></i> MySQL/PostgreSQL</span>
+                <span class="skill-pill"><i class="fa-solid fa-leaf"></i> MongoDB</span>
+            </div>
+            
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-chart-area"></i> Visualization & BI</div>
+                <span class="skill-pill"><i class="fa-solid fa-table-cells"></i> Tableau</span>
+                <span class="skill-pill"><i class="fa-solid fa-chart-simple"></i> Power BI</span>
+                <span class="skill-pill"><i class="fa-solid fa-chart-line"></i> Seaborn/Plotly</span>
+            </div>
+            
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-terminal"></i> DevOps & Tools</div>
+                <span class="skill-pill"><i class="fab fa-git"></i> Git/GitHub</span>
+                <span class="skill-pill"><i class="fab fa-jenkins"></i> Jenkins</span>
+                <span class="skill-pill"><i class="fab fa-docker"></i> Docker</span>
+                <span class="skill-pill"><i class="fa-solid fa-cogs"></i> CI/CD</span>
+                <span class="skill-pill"><i class="fa-solid fa-server"></i> Terraform</span>
+                <span class="skill-pill"><i class="fa-solid fa-shield-halved"></i> Azure DevOps</span>
+            </div>
+
+            <div class="skills-group">
+                <div class="skills-group-title"><i class="fa-solid fa-lock"></i> Modeling & Governance</div>
+                <span class="skill-pill"><i class="fa-solid fa-sitemap"></i> Dimensional Modeling</span>
+                <span class="skill-pill"><i class="fa-solid fa-star"></i> Star/Snowflake Schema</span>
+                <span class="skill-pill"><i class="fa-solid fa-mask"></i> PII Masking</span>
+                <span class="skill-pill"><i class="fa-solid fa-shield-alt"></i> Access Control</span>
+                <span class="skill-pill"><i class="fa-solid fa-brain"></i> ML/NLP</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card" id="certifications">
+        <div class="section-title"><span class="icon-section"><i class="fa-solid fa-award"></i></span>Certifications</div>
+        <ul class="cert-list">
+            <li><a class="cert-title cert-link" href="https://www.credly.com/badges/6448ec3c-42a9-4080-86b9-5dd6ba536455/public_url" target="_blank" rel="noopener noreferrer"><i class="fab fa-aws"></i> AWS Certified Solutions Architect – Associate</a></li>
+            <li><a class="cert-title cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Certified: Azure Data Engineer Associate</a></li>
+            <li><a class="cert-title cert-link" href="https://achieve.snowflake.com/1daee8f6-0e1e-4f40-9f20-18cee83c2d03" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-snowflake"></i> SnowPro Core Certification</a></li>
+            <li><a class="cert-title cert-link" href="https://credentials.databricks.com/dcb1ac33-0db3-460a-8e5f-d4b60c700013" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Databricks Certified Data Engineer Professional</a></li>
+            <li><a class="cert-title cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Certified: Power BI Data Analyst</a></li>
+            <li><a class="cert-title cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Certified: Azure Administrator Associate</a></li>
+            <li><a class="cert-title cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Certified: Azure Data Scientist Associate</a></li>
+            <li><a class="cert-title cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Certified: Fabric Analytics Engineer Associate</a></li>
+            <li><a class="cert-title cert-link" href="https://credentials.databricks.com/11600b90-422c-44b0-a53a-63e25ae486ee" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Academy Accreditation - Databricks Lakehouse Fundamentals</a></li>
+            <li><a class="cert-title cert-link" href="https://www.credly.com/badges/0b1cff3c-ed43-4641-8827-b71c5548cae4/public_url" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google"></i> Associate Cloud Engineer Certification</a></li>
+            <li><a class="cert-title cert-link" href="https://www.credly.com/badges/a747dfea-60ee-4dce-889a-032099a04961" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google"></i> Google Professional Cloud Architect Certification</a></li>
+            <li><a class="cert-title cert-link" href="https://www.credly.com/badges/57fdd1ef-7ed2-41a1-b0ed-fe15358cd915/public_url" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-chart-column"></i> Google Data Analytics Professional Certificate</a></li>
+            <li style="margin-top:24px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                 <a class="cert-link" href="https://learn.microsoft.com/en-gb/users/nalanagulaharshavardankamal-9300/transcript/dg0ywbxgrn95wjy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-microsoft"></i> Microsoft Transcript</a> | 
+                 <a class="cert-link" href="https://www.credly.com/users/harsha-vardan-kamal-nalanagula" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-award"></i> Credly Badges</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.section-card');
+        const mainContainer = document.getElementById('main-content');
+        
+        // Scroll-In Animation with Intersection Observer
+        const observer = new IntersectionObserver(
+            entries => entries.forEach(e => { 
+                if(e.isIntersecting) {
+                    setTimeout(() => {
+                        e.target.classList.add('visible');
+                        observer.unobserve(e.target); 
+                    }, 100); 
+                }
+            }),
+            { 
+                threshold: 0.1, 
+                rootMargin: '0px 0px -8% 0px' 
+            }
+        );
+
+        cards.forEach(sec => observer.observe(sec));
+
+        // Navigation Click Animation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                mainContainer.classList.remove('pulsing');
+                void mainContainer.offsetWidth; 
+                mainContainer.classList.add('pulsing');
+                
+                setTimeout(() => {
+                    mainContainer.classList.remove('pulsing');
+                }, 600);
+            });
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
